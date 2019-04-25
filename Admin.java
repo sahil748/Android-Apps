@@ -265,13 +265,20 @@ public class Admin
                             }
                             if(f==1)
                             {
-                                System.out.println("enter 1 to exit and 0 to enter again");
-                                int userChoice=sc.nextInt();
-                                if(userChoice==1)
-                                    return;
-                                else
-                                    f=0;
-                            }
+                                System.out.println("enter 1 to exit and 2 to see menu and any integer  to enter again");
+                                int userChoice=getInput();
+                                switch (userChoice) 
+                                {
+                                    case 1:
+                                        return;
+                                    case 2:
+                                        adminFunctions();
+                                        return ;
+                                    default:
+                                        f=0;
+                                        break;
+                                }
+                            }    
                         }
                         Customer customer=CustomersDetails.get(idToAddCar);          //get customer's details from list of all customer
                         ArrayList newCarsList=customer.carsList;                     //get list of already purchased cars
@@ -315,12 +322,18 @@ public class Admin
                             }
                             if(f==1)
                             {
-                                System.out.println("enter 1 to exit and 0 to enter again");
-                                int userChoice=sc.nextInt();
-                                if(userChoice==1)
-                                    return;
-                                else
-                                    f=0;
+                                System.out.println("enter 1 to exit and 2 to see menu and any integer  to enter again");
+                                int userChoice=getInput();
+                                switch (userChoice) {
+                                    case 1:
+                                        return;
+                                    case 2:
+                                        adminFunctions();
+                                        return ;
+                                    default:
+                                        f=0;
+                                        break;
+                                }
                             }
                         }
                         Customer customer1=CustomersDetails.get(idToSeeDetails);                       //get details uusing id  from all customers list
