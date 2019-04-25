@@ -2,6 +2,9 @@ package com.mycompany.mavenproject1;
 import java.util.*;
 import java.util.Random;
 import java.util.stream.*; 
+import java.util.Collections;
+import java.util.AbstractList;
+import java.util.Comparator;
 
 public class Admin 
 {
@@ -16,17 +19,26 @@ public class Admin
     
     //static Map<Customer,Integer> SortedCustomersDetails=new TreeMap<>();
     static int customer_Id=0;
-    /*static void sortDetails()
+    static void printSortedDetails()
     {
         List Listofvalues= CustomersDetails.values().stream().
         collect(Collectors.toCollection(ArrayList::new));
+        Collections.sort(Listofvalues, new Comparator<Customer>()
+        {
+            public int compare(Customer c1,Customer c2)
+            {
+                return String.valueOf(c1.name).compareTo(c2.name);
+                
+            }
+        });
         for (Iterator it = Listofvalues.iterator(); it.hasNext();) {
-            Object str = it.next();
-            System.out.println(str);
+            Customer str = (Customer) it.next();
+            str.displayCustomerDetails();
+            //System.out.println(str);
         }
         
-    }*/ 
-   static void printSortedDetails()                      //print sorted details according to names of customers
+    } 
+   /*static void printSortedDetails()                      //print sorted details according to names of customers
     {
         for(int id:CustomersDetails.keySet())
         {
@@ -36,7 +48,7 @@ public class Admin
         Set<Map.Entry<String,Customer>> entries= SortedCustomersDetails.entrySet();
                    entries.stream().map((customers) -> customers.getValue()).forEachOrdered(Customer::displayCustomerDetails); 
                    printStar();
-    }
+    }*/
        static int getInput( )                                     //validating integer input
    {
    Scanner sc =new Scanner(System.in);
@@ -200,7 +212,7 @@ public class Admin
         for(int i=0;i<6;i++)
         {
             int randomNumber=random.nextInt(CustomersDetails.size()+1);               //6 different ids generated randomly 
-            System.out.println(randomNumber);
+            
             if(randomSelected.contains(randomNumber)||randomNumber<=0)
             {
                 i--;
@@ -333,19 +345,9 @@ public class Admin
         hyundaiCars(8,"Santro",450000);
         hyundaiCars(9,"Creta",960000);
         adminFunctions();
-        print();
         
-        //System.out.print(getInput());
-        //sortDetails();
-      //  sortDetails();
-       // System.out.println
     }
-    static void print()
-    {
-        Random random=new Random();
-        for(int i=0;i<5;i++)
-        System.out.print(random.nextInt(CustomersDetails.size()+1));
-    }
+    
 }
 /*class SortMap implements Comparator<Customer>
 {
