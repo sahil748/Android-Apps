@@ -250,7 +250,7 @@ public class Admin
                        
                    }
                    else
-                   {
+                   {   int f=0;
                        int idToAddCar=-1;
                         while(idToAddCar==-1)
                         {
@@ -260,6 +260,17 @@ public class Admin
                             {
                                 System.out.println("Id does not exist");
                                 idToAddCar=-1;
+                                f=1;
+                                
+                            }
+                            if(f==1)
+                            {
+                                System.out.println("enter 1 to exit and 0 to enter again");
+                                int userChoice=sc.nextInt();
+                                if(userChoice==1)
+                                    return;
+                                else
+                                    f=0;
                             }
                         }
                         Customer customer=CustomersDetails.get(idToAddCar);          //get customer's details from list of all customer
@@ -291,6 +302,7 @@ public class Admin
                    else
                    {
                        int idToSeeDetails=-1;
+                       int f=0;
                         while(idToSeeDetails==-1)
                         {
                             System.out.println("Enter id of customer to see details");
@@ -299,6 +311,16 @@ public class Admin
                             {
                                 System.out.println("Id not found");
                                 idToSeeDetails=-1;
+                                f=1;
+                            }
+                            if(f==1)
+                            {
+                                System.out.println("enter 1 to exit and 0 to enter again");
+                                int userChoice=sc.nextInt();
+                                if(userChoice==1)
+                                    return;
+                                else
+                                    f=0;
                             }
                         }
                         Customer customer1=CustomersDetails.get(idToSeeDetails);                       //get details uusing id  from all customers list
