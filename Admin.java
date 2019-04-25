@@ -27,7 +27,7 @@ public class Admin
             @Override
             public int compare(Customer c1,Customer c2)
             {
-                return String.valueOf(c1.name).compareTo(c2.name);
+                return String.valueOf(c1.getName()).compareTo(c2.getName());
                 
             }
         });
@@ -189,7 +189,7 @@ public class Admin
                 System.out.println("Id already selected.\nPleasa select another.");
                     i--;
             } 
-            else if(enteredId>CustomersDetails.size())
+            else if(enteredId>CustomersDetails.size()||enteredId<=0)
             {
                  System.out.println("ID does not exist.\nPleasa select another");
                  i--;
@@ -218,7 +218,8 @@ public class Admin
         }
         if(f==0)
             System.out.println(" none.");                                         //if no id matches 
-        
+        else 
+            System.out.println("");
     }
     static void printStar()                                   //print several * to differentiate different tasks
     {

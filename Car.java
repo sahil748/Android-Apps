@@ -2,11 +2,11 @@ package com.mycompany.mavenproject1;
 
 public abstract class Car 
 {
-    String brand;
-    int carId;
-    String carModel;
-    double carPrice;
-    double resaleValue;
+     String brand;
+     int carId;
+     String carModel;
+     double carPrice;
+     double resaleValue;
     Car(int  carId,String carModel,double Price, String brand)
     {
         this.carId=carId;

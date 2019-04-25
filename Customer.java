@@ -4,8 +4,8 @@ import java.util.*;
 public class Customer 
 {
     Scanner sc=new Scanner(System.in);
-    int id;
-    String name;
+    private final int id;
+    private final String name;
     ArrayList<Car> carsList=new ArrayList<>();
     Customer(int id,String name,Car carInfo)
     {
@@ -13,7 +13,15 @@ public class Customer
         this.name=name;
         carsList.add(carInfo);
     }
-    void displayCustomerDetails()                                         //display details of customer
+    public int getId()
+    {
+        return id;
+    }
+    public String getName()
+    {
+        return name;
+    }
+    public void displayCustomerDetails()                                         //display details of customer
     {
         System.out.println("customer id: "+id+"       "+"Customer name: "+name+"\nCar details: ");
                 displayCarsList();
