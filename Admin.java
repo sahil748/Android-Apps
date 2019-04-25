@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.mycompany.mavenproject1;
 import java.util.*;
 import java.util.Random;
@@ -30,14 +25,12 @@ public class Admin
             System.out.println(str);
         }
         
-    }*/
+    }*/ 
    static void printSortedDetails()                      //print sorted details according to names of customers
     {
         for(int id:CustomersDetails.keySet())
         {
             Customer customer=CustomersDetails.get(id);
-            //ArrayList <Car> carsList=customer.carsList;
-            
             SortedCustomersDetails.put(customer.name,customer);
         }
         Set<Map.Entry<String,Customer>> entries= SortedCustomersDetails.entrySet();
@@ -204,10 +197,11 @@ public class Admin
                 adminSelected.add(enteredId);
         }
           System.out.println("CUSTOMERS WHO ARE ELIGIBLE FOR PRIZES ARE: ");
-        for(int i=0;i<randomSelected.size();i++)
+        for(int i=0;i<6;i++)
         {
-            int randomNumber=random.nextInt(CustomersDetails.size());               //6 different ids generated randomly 
-            if(randomSelected.contains(randomNumber))
+            int randomNumber=random.nextInt(CustomersDetails.size()+1);               //6 different ids generated randomly 
+            System.out.println(randomNumber);
+            if(randomSelected.contains(randomNumber)||randomNumber<=0)
             {
                 i--;
             }
@@ -339,10 +333,18 @@ public class Admin
         hyundaiCars(8,"Santro",450000);
         hyundaiCars(9,"Creta",960000);
         adminFunctions();
+        print();
+        
         //System.out.print(getInput());
         //sortDetails();
       //  sortDetails();
        // System.out.println
+    }
+    static void print()
+    {
+        Random random=new Random();
+        for(int i=0;i<5;i++)
+        System.out.print(random.nextInt(CustomersDetails.size()+1));
     }
 }
 /*class SortMap implements Comparator<Customer>
