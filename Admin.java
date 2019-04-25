@@ -3,7 +3,6 @@ import java.util.*;
 import java.util.Random;
 import java.util.stream.*; 
 import java.util.Collections;
-import java.util.AbstractList;
 import java.util.Comparator;
 
 public class Admin 
@@ -15,40 +14,30 @@ public class Admin
     static HashMap<String,Car>HyundaiCars =new HashMap<>();
     static List<Integer> adminSelected=new ArrayList<>();
     static List<Integer> randomSelected=new ArrayList<>();
-    static Map<String,Customer> SortedCustomersDetails=new TreeMap<>();
     
-    //static Map<Customer,Integer> SortedCustomersDetails=new TreeMap<>();
+    
+    
     static int customer_Id=0;
     static void printSortedDetails()
     {
-        List Listofvalues= CustomersDetails.values().stream().
-        collect(Collectors.toCollection(ArrayList::new));
-        Collections.sort(Listofvalues, new Comparator<Customer>()
+        List Listofvalues= CustomersDetails.values().stream().           //get details of customers from map to arraylist
+        collect(Collectors.toCollection(ArrayList::new));                
+        Collections.sort(Listofvalues, new Comparator<Customer>()       //sorting customers according to names using comparator
         {
+            @Override
             public int compare(Customer c1,Customer c2)
             {
                 return String.valueOf(c1.name).compareTo(c2.name);
                 
             }
         });
-        for (Iterator it = Listofvalues.iterator(); it.hasNext();) {
+        for (Iterator it = Listofvalues.iterator(); it.hasNext();)       //printing details
+        {
             Customer str = (Customer) it.next();
             str.displayCustomerDetails();
-            //System.out.println(str);
         }
         
     } 
-   /*static void printSortedDetails()                      //print sorted details according to names of customers
-    {
-        for(int id:CustomersDetails.keySet())
-        {
-            Customer customer=CustomersDetails.get(id);
-            SortedCustomersDetails.put(customer.name,customer);
-        }
-        Set<Map.Entry<String,Customer>> entries= SortedCustomersDetails.entrySet();
-                   entries.stream().map((customers) -> customers.getValue()).forEachOrdered(Customer::displayCustomerDetails); 
-                   printStar();
-    }*/
        static int getInput( )                                     //validating integer input
    {
    Scanner sc =new Scanner(System.in);
@@ -289,9 +278,6 @@ public class Admin
                    else
                    {
                        printSortedDetails();
-                     /*  Set<Map.Entry<Integer,Customer>> entries= CustomersDetails.entrySet();
-                   entries.stream().map((customers) -> customers.getValue()).forEachOrdered(Customer::displayCustomerDetails); 
-                   printStar();*/
                    }
                    
                    break;
@@ -324,6 +310,8 @@ public class Admin
                    generatePrizes();
                    printStar();
                    break;
+               default:
+                   return;
              }     
              if(!(selectedOption.equals("6")))
              {
@@ -349,11 +337,3 @@ public class Admin
     }
     
 }
-/*class SortMap implements Comparator<Customer>
-{
-    @Override
-    public int compare(Customer c1,Customer c2)
-    {
-        return c1.name.compareTo(c2.name);
-    }
-}*/
