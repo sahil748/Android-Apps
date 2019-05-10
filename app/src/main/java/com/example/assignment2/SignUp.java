@@ -15,8 +15,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import static com.example.assignment2.Init.displaySnackbar;
+
 public class SignUp extends AppCompatActivity {
-    private  EditText mNameText;
+    private static EditText mNameText;
     private  EditText mGenderText;
     private  EditText mUserTypeText;
     private  EditText mOccupationText;
@@ -27,6 +29,10 @@ public class SignUp extends AppCompatActivity {
         setContentView(R.layout.activity_sign_up);
         setText();
         setHintText();
+    }
+    public static View getNameText()
+    {
+        return mNameText;
     }
     public void setText()                                                                             //set text to textview using id
     {
@@ -59,8 +65,8 @@ public class SignUp extends AppCompatActivity {
 
 
     }
-        private boolean validName(View view)                                                         ////validates name edittext. it should not be empty,length >3,contains only alphabets
-        {
+    private boolean validName(View view)                                                         ////validates name edittext. it should not be empty,length >3,contains only alphabets
+    {
         String name = mNameText.getEditableText().toString();
         if(name.isEmpty()){
             displaySnackbar(view,"Please enter name");
@@ -153,14 +159,10 @@ public class SignUp extends AppCompatActivity {
         else{
 
             Intent moveToOtp = new Intent(SignUp.this, OtpActivity.class);
-        startActivityForResult(moveToOtp,0);
+            startActivityForResult(moveToOtp,0);
 
         }
 
-    }
-    public void displaySnackbar(View view, String displayStr)                                         //show  argument string to user
-    {
-        Snackbar.make(view, displayStr, Snackbar.LENGTH_SHORT).show();
     }
     public void moveToLogin(View view)                                                               //move to login activity by destroying current page
     {

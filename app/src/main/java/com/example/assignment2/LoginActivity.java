@@ -15,8 +15,9 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-
 import java.util.regex.Pattern;
+
+import static com.example.assignment2.Init.displaySnackbar;
 
 public class LoginActivity extends AppCompatActivity {
     private EditText mEmailText;
@@ -84,16 +85,19 @@ public class LoginActivity extends AppCompatActivity {
     {
         String email = mEmailText.getEditableText().toString().trim();
         if (email.isEmpty()) {
+            closeKeyboard();
             displaySnackbar(view, "Please Enter email id");
             mEmailText.requestFocus();
             return false;
         }
                                                                         // EMAIL is the pattern for the regex validation for email id
         else if (!EMAIL.matcher(email).matches()) {
+            closeKeyboard();
             displaySnackbar(view, "Invalid Email id");
             mEmailText.requestFocus();
             return false;
         } else if (email.indexOf(".") - email.indexOf("@") < 1) {
+            closeKeyboard();
             displaySnackbar(view, "Invalid Email id");
             mEmailText.requestFocus();
             return false;
@@ -105,6 +109,7 @@ public class LoginActivity extends AppCompatActivity {
     {
         String password = mPasswordText.getEditableText().toString().trim();
         if (password.isEmpty()) {
+            closeKeyboard();
             displaySnackbar(view, "Please enter Password");
             mPasswordText.requestFocus();
             return false;
@@ -123,16 +128,6 @@ public class LoginActivity extends AppCompatActivity {
             displaySnackbar(view, "Login successful");
         }
     }
-
-
-    public void displaySnackbar(View view, String displayStr)                                         //show  argument string to user
-    {
-        closeKeyboard();
-
-        Snackbar.make(view, displayStr, Snackbar.LENGTH_SHORT).show();
-    }
-
-
     public void closeKeyboard()                                                                     //hides keyboard to show snackbar message
     {
         View view = this.getCurrentFocus();
