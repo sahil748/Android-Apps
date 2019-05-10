@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/layout_padding_allsides"
+    tools:context=".LoginActivity">
+    <TextView
+
+        android:id="@+id/login_tv_header"
+        android:layout_marginTop="@dimen/login_header_1_top_margin"
+        android:textSize="@dimen/login_header_1_textSize"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <EditText
+
+        android:textSize="@dimen/medium_textsize"
+        android:layout_marginTop="@dimen/login_tv_email_top_margin"
+        android:id="@+id/login_tv_email_id"
+        android:inputType="textEmailAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText
+            android:textSize="@dimen/medium_textsize"
+            android:layout_marginTop="@dimen/view_margin"
+            android:id="@+id/login_tv_password_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"/>
+        <ImageView
+            android:src="@drawable/view"
+            android:id="@+id/login_iv_eye"
+            android:layout_marginTop="@dimen/view_margin"
+            android:layout_alignRight="@id/login_tv_password_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+
+
+
+        <Button
+            android:layout_marginTop="@dimen/btn_top_margin"
+            android:id="@+id/login_btn_log_in"
+            style="@style/primaryBtn"
+            android:onClick="login"
+            android:textSize="@dimen/btn_txt_size"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:gravity="bottom|center_horizontal"
+        android:layout_height="match_parent">
+        <TextView
+
+            android:id="@+id/login_tv_not_registered"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:onClick="register"
+
+            android:id="@+id/login_tv_register"
+            style="@style/clickableText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+</LinearLayout>

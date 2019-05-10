@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:padding="@dimen/layout_padding_allsides"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".SignUp">
+    <ImageView
+        android:id="@+id/signup_iv_back"
+        android:layout_alignParentLeft="true"
+        android:src="@drawable/back"
+        android:onClick="moveToLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/signup_tv_header_1"
+        android:layout_marginTop="@dimen/view_margin"
+        android:layout_below="@+id/signup_iv_back"
+        android:textSize="@dimen/large_textsize"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/signup_tv_header_2"
+        android:layout_below="@id/signup_tv_header_1"
+        android:textSize="@dimen/medium_textsize"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <ImageView
+        android:id="@+id/signup_iv_avatar_id"
+        android:layout_marginTop="@dimen/view_margin"
+        android:layout_width="wrap_content"
+        android:layout_below="@+id/signup_tv_header_2"
+        android:src="@drawable/avatar"
+        android:layout_height="wrap_content"
+        android:scaleType="centerCrop"
+        android:layout_centerHorizontal="true"/>
+    <EditText
+        android:id="@+id/signup_et_name"
+        android:layout_marginTop="@dimen/view_margin"
+        android:layout_below="@+id/signup_iv_avatar_id"
+        android:inputType="text"
+        android:textSize="@dimen/small_textsize"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <EditText
+        android:id="@+id/signup_et_gender"
+        android:layout_marginTop="@dimen/view_margin"
+        android:layout_below="@+id/signup_et_name"
+        android:inputType="text"
+        android:textSize="@dimen/small_textsize"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <EditText
+        android:id="@+id/signup_et_user_type"
+        android:layout_marginTop="@dimen/view_margin"
+        android:layout_below="@+id/signup_et_gender"
+        android:inputType="text"
+        android:textSize="@dimen/small_textsize"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <EditText
+        android:id="@+id/signup_et_occupation"
+        android:layout_marginTop="@dimen/view_margin"
+        android:layout_below="@+id/signup_et_user_type"
+        android:inputType="text"
+        android:textSize="@dimen/small_textsize"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/signup_btn_cont"
+            android:textSize="@dimen/btn_txt_size"
+            android:onClick="moveToOtpScreen"
+            style="@style/secondaryBtn"
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+<!--</LinearLayout>-->
+
+
+    <TextView
+        android:id="@+id/signup_tv_different_account"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/view_margin"
+        android:layout_above="@+id/signup_btn_cont"
+        android:textSize="@dimen/small_textsize"
+        style="@style/clickableText"
+        android:layout_width="match_parent"
+        android:onClick="moveToLogin"
+        android:gravity="center"
+        android:layout_height="wrap_content" />
+
+
+</RelativeLayout>

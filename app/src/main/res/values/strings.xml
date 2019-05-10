@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Assignment2</string>
+    <string name="splash_tv_text">Assignment 2</string>
+    <string name="login_tv_header">Log in to your account</string>
+    <string name="login_btn_log_in">Log in</string>
+    <string name="login_email_hint">Email</string>
+    <string name="login_password_hint">Password</string>
+    <string name="login_tv_not_registered">Dont have an account?</string>
+    <string name="login_tv_resister">REGISTER</string>
+    <string name="signup_tv_header_1">Welcome,</string>
+    <string name="signup_tv_header_2">Please provide your basic information</string>
+    <string name="signup_et_name_hint">Full Name</string>
+    <string name="signup_et_gender_hint">Gender</string>
+    <string name="signup_et_user_type_hint">User Type</string>
+    <string name="signup_et_occupation_hint">Occupation</string>
+    <string name="signup_tv_different_account">Sign up with different account?</string>
+    <string name="signup_tv_continue">Continue</string>
+    <string name="otp_tv_header_1">OTP Verification</string>
+    <string name="otp_tv_header_2">Enter the verification code</string>
+    <string name="otp_tv_header_3">sent to your number via sms.</string>
+    <string name="otp_btn_resend">Resend</string>
+    <string name="otp_btn_submit">Submit</string>
+</resources>

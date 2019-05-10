@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="splash_tv_textsize">40sp</dimen>
+    <dimen name="small_textsize">12sp</dimen>
+    <dimen name="medium_textsize">16sp</dimen>
+    <dimen name="large_textsize">20sp</dimen>
+    <dimen name="layout_padding_allsides">30dp</dimen>
+    <dimen name="view_margin">20dp</dimen>
+    <dimen name="btn_txt_size">14sp</dimen>
+    <dimen name="btn_top_margin">40dp</dimen>
+    <dimen name="login_header_1_textSize">40sp</dimen>
+    <dimen name="login_header_1_top_margin">40sp</dimen>
+
+    <dimen name="login_tv_email_top_margin">40dp</dimen>
+
+
+</resources>
