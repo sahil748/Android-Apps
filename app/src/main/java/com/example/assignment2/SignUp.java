@@ -1,13 +1,16 @@
 package com.example.assignment2;
 
 
+import android.content.Context;
 import android.content.Intent;
+import android.os.Handler;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -60,18 +63,25 @@ public class SignUp extends AppCompatActivity {
         {
         String name = mNameText.getEditableText().toString();
         if(name.isEmpty()){
-            Snackbar snackbar = Snackbar.make(view,"Please enter name",Snackbar.LENGTH_LONG);
-            snackbar.show();
+            displaySnackbar(view,"Please enter name");
+            mNameText.requestFocus();
+
             return false;
         }
         else if(name.length()<3){
-            Snackbar snackbar = Snackbar.make(view,"name too short",Snackbar.LENGTH_LONG);
-            snackbar.show();
+            displaySnackbar(view,"name too short");
+            mNameText.requestFocus();
             return false;
         }
-        else if(!name.matches( "[a-zA-Z]*" )){
-            Snackbar snackbar = Snackbar.make(view,"Invalid name",Snackbar.LENGTH_LONG);
-            snackbar.show();
+        else if(!name.matches( "[a-z A-Z]*" )){
+            displaySnackbar(view,"Invalid name");
+            mNameText.requestFocus();
+            return false;
+        }
+        else if(!(name.contains(" ")))
+        {
+            displaySnackbar(view,"Please enter last name");
+            mNameText.requestFocus();
             return false;
         }
         return true;
@@ -82,14 +92,15 @@ public class SignUp extends AppCompatActivity {
         gender.toLowerCase();
 
         if(gender.isEmpty()){
-            Snackbar snackbar = Snackbar.make(view,"Please Enter gender", Snackbar.LENGTH_LONG);
-            snackbar.show();
+            displaySnackbar(view,"Please Enter gender");
+            mGenderText.requestFocus();
             return false;
         }
 
         else if(!(gender.matches("[mfMF]") | gender.matches("male") | gender.matches("MALE") | gender.matches("female") | gender.matches("OTHER")| gender.matches("other")| gender.matches("FEMALE"))){
-            Snackbar snackbar = Snackbar.make(view,"Invalid gender input",Snackbar.LENGTH_LONG);
-            snackbar.show();
+            displaySnackbar(view,"Invalid gender input");
+            mGenderText.requestFocus();
+
             return false;
         }
         return true;
@@ -100,14 +111,14 @@ public class SignUp extends AppCompatActivity {
         String userType = mUserTypeText.getEditableText().toString().trim();
 
         if(userType.isEmpty()){
-            Snackbar snackbar = Snackbar.make(view,"Please enter user type",Snackbar.LENGTH_LONG);
-            snackbar.show();
+            displaySnackbar(view,"Please enter user type");
+            mUserTypeText.requestFocus();
             return false;
         }
 
-        else if(!userType.matches( "[a-zA-Z]*" )){
-            Snackbar snackbar = Snackbar.make(view,"Enter alphabets only in user type",Snackbar.LENGTH_LONG);
-            snackbar.show();
+        else if(!userType.matches( "[a-z A-Z]*" )){
+            displaySnackbar(view,"Enter alphabets only in user type");
+            mUserTypeText.requestFocus();
             return false;
         }
         return true;
@@ -118,14 +129,14 @@ public class SignUp extends AppCompatActivity {
         String occupation = mOccupationText.getEditableText().toString().trim();
 
         if(occupation.isEmpty()){
-            Snackbar snackbar = Snackbar.make(view,"please enter occupation",Snackbar.LENGTH_LONG);
-            snackbar.show();
+            displaySnackbar(view,"please enter occupation");
+            mOccupationText.requestFocus();
             return false;
         }
 
-        else if(!occupation.matches( "[a-zA-Z]*" )){
-            Snackbar snackbar = Snackbar.make(view,"Please enter alphabets only in occation",Snackbar.LENGTH_LONG);
-            snackbar.show();
+        else if(!occupation.matches( "[a-z A-Z]*" )){
+            displaySnackbar(view,"Please enter alphabets only in occation");
+            mOccupationText.requestFocus();
             return false;
         }
         return true;
@@ -135,7 +146,10 @@ public class SignUp extends AppCompatActivity {
     public void moveToOtpScreen(View view)                                                            //move to otp screen after validating every edit text by calling their function
     {
         if(!(validName(view) && validGender(view) && validUser(view) && validOccupation(view)))
+        {
+            showKeyboard();
             return;
+        }
         else{
 
             Intent moveToOtp = new Intent(SignUp.this, OtpActivity.class);
@@ -143,10 +157,29 @@ public class SignUp extends AppCompatActivity {
 
         }
 
-    }                                                                                                 //move to login activity by destroying current page
-    public void moveToLogin(View view)
+    }
+    public void displaySnackbar(View view, String displayStr)                                         //show  argument string to user
+    {
+        Snackbar.make(view, displayStr, Snackbar.LENGTH_SHORT).show();
+    }
+    public void moveToLogin(View view)                                                               //move to login activity by destroying current page
     {
         finish();
+
+    }
+    public void showKeyboard()                                                                        // shows keyboard after 2 seconds by using handler
+    {
+        final View view = this.getCurrentFocus();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run()
+            {
+
+                InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.showSoftInput(view, InputMethodManager.SHOW_IMPLICIT);
+
+            }
+        },1900);
 
     }
 }
