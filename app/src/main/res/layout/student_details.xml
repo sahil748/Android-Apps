@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/layout_padding"
+    android:layout_marginBottom="@dimen/view_margin"
+    android:background="@drawable/student_details_view_border"
+    android:id="@+id/view_student_linear_layout"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/model_student_details_tv_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/studentDetails_tv_name"
+        android:textSize="@dimen/large_textsize"/>
+    <TextView
+        android:id="@+id/model_student_details_tv_roll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/studentDetails_tv_rollno"
+        android:textSize="@dimen/large_textsize"/>
+    <TextView
+        android:id="@+id/model_student_details_tv_class"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/studentDetails_tv_class"
+        android:textSize="@dimen/large_textsize"/>
+
+</LinearLayout>

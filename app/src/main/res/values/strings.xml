@@ -1,0 +1,59 @@
+<resources>
+    <string name="app_name">Assignment5</string>
+    <string name="add_student_btn">Add</string>
+    <string name="fragment_studentList_btn_add">Add</string>
+    <string name="fragment_students_list_tv_nodata">No Data Found</string>
+    <string name="fragment_student_list_btn_add">Add Student</string>
+
+    <string name="tab_layout_list">Students List</string>
+    <string name="tab_layout_add">Add/Update</string>
+
+    <string name="value_add">Add</string>
+    <string name="value_edit">Edit</string>
+    <string name="value_view">View</string>
+
+    <string name="bundle_name">name</string>
+    <string name="bundle_roll">roll</string>
+    <string name="bundle_class">class</string>
+
+    <string name="builder_title">Select Option</string>
+    <string name="dialog_btn_view">View</string>
+    <string name="dialog_btn_edit">Edit</string>
+    <string name="dialog_btn_delete">Delete</string>
+
+    <string name="et_name_empty">Name field can not be empty</string>
+    <string name="et_roll_empty">Roll field can not be empty</string>
+    <string name="et_class_empty">Class field can not be empty</string>
+    <string name="et_name_wrong">Wrong input(name) entered</string>
+    <string name="et_roll_wrong">Wrong input(roll) entered</string>
+    <string name="et_class_wrong">Wrong input(class) entered</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="dialog_btn_async">Async Task</string>
+    <string name="dialog_btn_service">Service</string>
+    <string name="dialog_btn_intent_service">Intent Service</string>
+
+    <string name="value_editing">Edit</string>
+    <string name="splash_tv_text">Assignment 5</string>
+    <string name="studentDetailsActivity_tv_header">STUDENT DETAILS</string>
+    <string name="studentDetails_tv_name">Name</string>
+    <string name="studentDetails_tv_rollno">Roll No</string>
+    <string name="studentDetails_tv_class">Class</string>
+    <string name="sortMenu_sort_by_name">name </string>
+    <string name="sortMenu_name">Sort</string>
+    <string name="studentList_btn_addText">Add Student</string>
+    <string name="studentList_DialogBox_Title">CHOOSE AN OPTION</string>
+    <string name="Dialog_Option_View">View</string>
+    <string name="Dialog_Option_Edit">Edit</string>
+    <string name="Dialog_Option_Delete">Delete</string>
+    <string name="studentDetailsActivity_btn_updateText">Update</string>
+    <string name="error_enter_name">Please Enter name!</string>
+    <string name="error_invalid_name">Invalid Name!</string>
+    <string name="error_enter_class">Please enter class name</string>
+    <string name="error_invalid_class">Enter alphabets only in class</string>
+    <string name="error_invalid_rollno">Invalid Rollno!</string>
+    <string name="error_enter_rollno">Please Enter Rollno!</string>
+    <string name="message_added_to_db">Added to database</string>
+
+
+</resources>

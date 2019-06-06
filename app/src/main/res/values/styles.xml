@@ -1,0 +1,26 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+    <style name="SecondaryRoundedButton">
+        <item name="android:textSize">@dimen/btn_txt_size</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/rounded_border_button</item>
+        <item name="android:textColor">@color/colorSecondaryBtnText</item>
+    </style>
+    <style name="primaryButton">
+        <item name="android:background">@color/colorPrimaryBtn</item>
+        <item name="android:textSize">@dimen/btn_txt_size</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/colorPrimaryBtnText</item>
+    </style>
+
+
+</resources>
