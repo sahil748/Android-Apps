@@ -4,7 +4,7 @@ import android.content.Context;
 import android.os.AsyncTask;
 
 import com.example.assignment4.database.StudentDatabaseHelper;
-import com.example.assignment4.fragments.StudentDetailsFragment;
+import com.example.assignment4.fragment.StudentDetailsFragment;
 import com.example.assignment4.helper.Constants;
 
 public class StudentAsyncTaskHelper extends AsyncTask<String,Void,String> {

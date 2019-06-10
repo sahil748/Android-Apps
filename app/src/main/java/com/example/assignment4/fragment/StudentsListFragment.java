@@ -1,4 +1,4 @@
-package com.example.assignment4.fragments;
+package com.example.assignment4.fragment;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -20,7 +20,7 @@ import com.example.assignment4.background.StudentServiceHelper;
 import com.example.assignment4.database.StudentDatabaseHelper;
 import com.example.assignment4.helper.Constants;
 import com.example.assignment4.R;
-import com.example.assignment4.models.StudentModel;
+import com.example.assignment4.model.StudentModel;
 import com.example.assignment4.activity.StudentDetailsActivity;
 import com.example.assignment4.adapter.StudentRecyclerViewAdapter;
 
@@ -175,7 +175,6 @@ public class StudentsListFragment extends Fragment implements StudentRecyclerVie
         mName = bundle.getString(Constants.STUDENT_NAME);
         mRoll = bundle.getString(Constants.STUDENT_ROLLNO);
         mClassName = bundle.getString(Constants.STUDENT_CLASS);
-       // ************
         mResultOfButton= bundle.getString(Constants.BUTTON_ACTION_KEY);
         if(mResultOfButton.equals(Constants.BUTTON_ACTION_ASYNCTASK)) {
             if (mResult.equals(Constants.EDIT)) {
@@ -188,9 +187,6 @@ public class StudentsListFragment extends Fragment implements StudentRecyclerVie
                 mStudentslist.add(mViewPosition, new StudentModel(mName, mRoll, mClassName));
                 mAdapter = new StudentRecyclerViewAdapter(mStudentslist, this);
                 mStudentRecyclerView.setAdapter(mAdapter);
-            }
-            else {
-                insertIntoArrayList(bundle);
             }
         }
         else if(mResultOfButton.equals(Constants.BUTTON_ACTION_SERVICE)){
@@ -206,9 +202,6 @@ public class StudentsListFragment extends Fragment implements StudentRecyclerVie
                 mStudentRecyclerView.setAdapter(mAdapter);
 
             }
-            else {
-                insertIntoArrayList(bundle);
-            }
         }
         else if(mResultOfButton.equals(Constants.BUTTON_ACTION_INTENTSERVICE)){
             if (mResult.equals(Constants.EDIT)) {
@@ -222,9 +215,6 @@ public class StudentsListFragment extends Fragment implements StudentRecyclerVie
                 mAdapter = new StudentRecyclerViewAdapter(mStudentslist, this);
                 mStudentRecyclerView.setAdapter(mAdapter);
 
-            }
-            else {
-                insertIntoArrayList(bundle);
             }
         }
         isDataAvailable(Constants.STUDENT_LIST_EMPTY);
@@ -243,13 +233,6 @@ public class StudentsListFragment extends Fragment implements StudentRecyclerVie
         bundle.putString(Constants.STUDENT_NAME,mName);
         bundle.putString(Constants.STUDENT_ROLLNO,mRoll);
         bundle.putString(Constants.STUDENT_CLASS,mClassName);
-    }
-    public void insertIntoArrayList(Bundle bundle){
-        mName = bundle.getString(Constants.STUDENT_NAME);
-        mRoll = bundle.getString(Constants.STUDENT_ROLLNO);
-        mClassName = bundle.getString(Constants.STUDENT_CLASS);
-        mStudentslist.add(new StudentModel(mName, mRoll, mClassName));
-        mAdapter.notifyDataSetChanged();
     }
     public void putDataInIntent(Intent intent){
         intent.putExtra(Constants.KEY,Constants.EDIT);

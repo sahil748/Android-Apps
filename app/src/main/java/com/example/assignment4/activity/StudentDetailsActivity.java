@@ -7,7 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.example.assignment4.R;
-import com.example.assignment4.fragments.StudentDetailsFragment;
+import com.example.assignment4.fragment.StudentDetailsFragment;
 
 public class StudentDetailsActivity extends AppCompatActivity {
 

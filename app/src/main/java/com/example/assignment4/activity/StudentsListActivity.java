@@ -10,8 +10,8 @@ import android.view.View;
 
 import com.example.assignment4.helper.Constants;
 import com.example.assignment4.R;
-import com.example.assignment4.fragments.StudentDetailsFragment;
-import com.example.assignment4.fragments.StudentsListFragment;
+import com.example.assignment4.fragment.StudentDetailsFragment;
+import com.example.assignment4.fragment.StudentsListFragment;
 import com.example.assignment4.adapter.HomePageAdapter;
 
 import java.util.ArrayList;

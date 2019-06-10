@@ -5,7 +5,7 @@
 
     android:layout_height="match_parent"
     android:id="@+id/frameLayout"
-    tools:context=".fragments.StudentsListFragment">
+    tools:context=".fragment.StudentsListFragment">
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recycler_view"

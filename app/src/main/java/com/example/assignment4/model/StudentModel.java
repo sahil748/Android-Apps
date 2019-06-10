@@ -1,4 +1,4 @@
-package com.example.assignment4.models;
+package com.example.assignment4.model;
 
 public class StudentModel {
         private String name,roll,className;

@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.assignment4.R;
-import com.example.assignment4.models.StudentModel;
+import com.example.assignment4.model.StudentModel;
 
 import java.util.ArrayList;
 

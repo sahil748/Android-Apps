@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:padding="@dimen/layout_padding"
     android:layout_height="match_parent"
-    tools:context=".fragments.StudentDetailsFragment">
+    tools:context=".fragment.StudentDetailsFragment">
         <TextView
             android:layout_marginTop="@dimen/studentDetails_tv_topMargin"
             android:id="@+id/id_studentDetails_header"
