@@ -23,7 +23,7 @@ public class StudentsListActivity extends AppCompatActivity implements StudentsL
      * @param mFragmentsList for adding the various fragments in the pageadapter.
      * @param mViewPager is the object of ViewPager
      * @param mTabNames for giving the names to the tab titles
-     * @param constant is the object of class constant declared in util package for fetching constant values
+     * @param constant is the object of class constant declared in Util package for fetching constant values
      */
 
     private PagerAdapter mPageAdapter;

@@ -5,7 +5,7 @@ import android.widget.Toast;
 
 import com.example.assignment4.R;
 
-public class util {
+public class Util {
     private static final String mValidatesName =("[a-zA-Z][a-zA-Z ]+[a-zA-Z]$");                     //patterns to validate name                                  //validation pattern for name
     private static final String mValidatesRoll =("[0-9]*");                                            //rollno and class of students
     private static final String mValidatesClass =("[a-zA-Z]*" );

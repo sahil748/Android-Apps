@@ -20,7 +20,7 @@ import com.example.assignment4.background.StudentServiceHelper;
 import com.example.assignment4.database.StudentDatabaseHelper;
 import com.example.assignment4.helper.Constants;
 import com.example.assignment4.R;
-import com.example.assignment4.helper.util;
+import com.example.assignment4.helper.Util;
 
 
 public class StudentDetailsFragment extends Fragment {
@@ -28,7 +28,7 @@ public class StudentDetailsFragment extends Fragment {
         private EditText etName,etRoll,etClassName;
         private Button btnAdd;
         private OnAddFragmentListener fragmentCaller;
-        util utl;
+        Util utl;
         StudentDatabaseHelper myDb;
         BroadcastReceiver serviceBroadcastReceiver,intentServiceBroadcastReceiver;
         IntentFilter intentFilter = new IntentFilter();
@@ -51,7 +51,7 @@ public class StudentDetailsFragment extends Fragment {
 
             // Inflates the layout for this fragment
             final View view = inflater.inflate(R.layout.fragment_student_details, container, false);
-            utl=new util();
+            utl=new Util();
             initEditText(view);
             final Context context =getActivity();
             myDb = new StudentDatabaseHelper(context);
@@ -92,7 +92,7 @@ public class StudentDetailsFragment extends Fragment {
             btnAdd.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    utl=new util();
+                    utl=new Util();
                     etName.requestFocus();
                     mName = etName.getText().toString();
                     mRoll = etRoll.getText().toString();
@@ -189,7 +189,7 @@ public class StudentDetailsFragment extends Fragment {
 
     //function for getting the result from asyncTask and displaying a toast
     public void resultFromAsync(Context context,String result){
-            utl=new util();
+            utl=new Util();
         utl.showToast(context,result);
     }
     public void getValues(){
