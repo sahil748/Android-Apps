@@ -14,12 +14,11 @@ import com.example.retroassignment.model.User;
 import java.util.ArrayList;
 
 public class UsersDetailsAdapter extends RecyclerView.Adapter {
-    private ArrayList<User> userArrayList;
-    private UserClickListener userClickListener;
-
-    public UsersDetailsAdapter(ArrayList<User> userArrayList)
+    private ArrayList<User> mUserArrayList;
+    private UserClickListener mUserClickListener;
+    public UsersDetailsAdapter(ArrayList<User> mUserArrayList)
     {
-        this.userArrayList = userArrayList;
+        this.mUserArrayList = mUserArrayList;
     }
     @NonNull
 
@@ -30,7 +29,7 @@ public class UsersDetailsAdapter extends RecyclerView.Adapter {
     }
 
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
-        User user = userArrayList.get(i);
+        User user = mUserArrayList.get(i);
         UserViewHolder holder = (UserViewHolder) viewHolder;
         holder.tvUserId.setText(String.valueOf(user.getUserId()));
         holder.tvUserName.setText(user.getName());
@@ -38,7 +37,7 @@ public class UsersDetailsAdapter extends RecyclerView.Adapter {
 
     }
     public int getItemCount() {
-        return userArrayList.size();
+        return mUserArrayList.size();
     }
 
     //View Holder Class for holding view
@@ -56,10 +55,10 @@ public class UsersDetailsAdapter extends RecyclerView.Adapter {
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (userClickListener != null) {
+                    if (mUserClickListener != null) {
                         int position = getAdapterPosition();
                         if (position != RecyclerView.NO_POSITION) {
-                            userClickListener.onCLick(position);
+                            mUserClickListener.onCLick(position);
                         }
                     }
                 }
@@ -67,12 +66,14 @@ public class UsersDetailsAdapter extends RecyclerView.Adapter {
         }
     }
 
-    //Interface for Click Listener
+    /**
+     * Interface for Click Listener
+     */
     public interface UserClickListener {
         void onCLick(int position);
     }
 
     public void setOnClickListener(UserClickListener listener) {
-        userClickListener = listener;
+        mUserClickListener = listener;
     }
 }

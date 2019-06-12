@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:background="#000000"
+    android:background="@drawable/selector_user_list"
     android:orientation="horizontal"
     android:layout_height="wrap_content">
     <ImageView
+        android:padding="3dp"
         android:id="@+id/iv_user_image"
+        android:scaleType="centerCrop"
         android:layout_width="@dimen/list_image_width"
         android:layout_height="@dimen/list_image_height"
         android:src="@drawable/ic_user" />
@@ -21,26 +23,25 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:weightSum="2"
-
             android:orientation="horizontal">
             <TextView
-                android:layout_width="0dp"
+                android:layout_width="@dimen/width_zero"
                 android:layout_weight="1.7"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/name_text_margin_top_list"
                 android:textStyle="bold"
-                android:textColor="@color/primary_text"
+                android:textColor="@color/secondaryText"
                 android:id="@+id/tv_user_name"/>
 
             <TextView
-                android:layout_width="0dp"
+                android:layout_width="@dimen/width_zero"
                 android:layout_weight="0.3"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="@dimen/list_margin_right_id"
                 android:gravity="end"
                 android:layout_marginTop="@dimen/name_text_margin_top_list"
                 android:textStyle="bold"
-                android:textColor="@color/primary_text"
+                android:textColor="@color/secondaryText"
                 android:id="@+id/tv_user_id"
                 android:layout_marginEnd="@dimen/list_margin_right_id" />
         </LinearLayout>
@@ -50,7 +51,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/tv_user_email"
             android:layout_marginTop="@dimen/name_text_margin_top_list"
-            android:textColor="@color/secondary_text" />
+            android:textColor="@color/grayLight" />
     </LinearLayout>
 
 

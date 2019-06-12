@@ -8,16 +8,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.retroassignment.R;
 import com.example.retroassignment.adapter.UsersDetailsAdapter;
-import com.example.retroassignment.constant.Constant;
+import com.example.retroassignment.helper.Constant;
 import com.example.retroassignment.model.User;
 import com.example.retroassignment.network.GetDataService;
 import com.example.retroassignment.network.RetrofitUserInstance;
@@ -35,12 +33,12 @@ public class UsersDetailsActivity extends AppCompatActivity {
     private TextView tvId;
     private TextView tvEmail;
     private Button btnFetchPost,btnMoreDetails;
-    private RecyclerView recyclerView;
-    private UsersDetailsAdapter userDetailsAdapter;
+    private RecyclerView mRecyclerView;
+    private UsersDetailsAdapter mUserDetailsAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
-    private GetDataService getDataService;
-    private ProgressDialog progress;
-    private int adapterPosition;
+    private GetDataService mGetDataService;
+    private ProgressDialog mProgress;
+    private int mAdapterPosition;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,28 +48,30 @@ public class UsersDetailsActivity extends AppCompatActivity {
     }
 
     private void init() {
-        tvName = findViewById(R.id.tv_frag_user_name);
-        tvId = findViewById(R.id.tv_frag_user_id);
-        tvEmail = findViewById(R.id.tv_frag_user_email);
+        tvName = findViewById(R.id.rv_user_tv_name);
+        tvId = findViewById(R.id.rv_user_tv_id);
+        tvEmail = findViewById(R.id.rv_user_tv_email);
 
         btnFetchPost = findViewById(R.id.btn_fetch_post);
         btnMoreDetails=findViewById(R.id.btn_more_details);
 
-        recyclerView = findViewById(R.id.rv_user_list);
-        progress = ProgressDialog.show(this, getString(R.string.progress_title), getString(R.string.progress_body), true);
-
-
-        userDetailsAdapter = new UsersDetailsAdapter(mUserArrayList);
+        mRecyclerView = findViewById(R.id.rv_user_list);
+        mProgress = ProgressDialog.show(this, getString(R.string.progress_title), getString(R.string.progress_body), true);
+        mUserDetailsAdapter = new UsersDetailsAdapter(mUserArrayList);
         mLayoutManager = new LinearLayoutManager(UsersDetailsActivity.this);
-        recyclerView.setLayoutManager(mLayoutManager);
-        recyclerView.setAdapter(userDetailsAdapter);
+        mRecyclerView.setLayoutManager(mLayoutManager);
+        mRecyclerView.setAdapter(mUserDetailsAdapter);
         recyclerTouchHandle();
         fetchUserPost();
         showMoreDetails();
-        getDataService = RetrofitUserInstance.getUser().create(GetDataService.class);
+        mGetDataService = RetrofitUserInstance.getUser().create(GetDataService.class);
     }
 
-    //Fetch User Posts
+    /**
+     * shows User Posts
+     * shows message when no user is selected
+     * and details of user sent through intent
+     */
     private void fetchUserPost() {
         btnFetchPost.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,6 +87,11 @@ public class UsersDetailsActivity extends AppCompatActivity {
             }
         });
     }
+
+    /**
+     * shows all details of user through alert dialog
+     * shows message when no user is selected to show details
+     */
     private void showMoreDetails(){
         btnMoreDetails.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,20 +102,20 @@ public class UsersDetailsActivity extends AppCompatActivity {
                 else {
                     AlertDialog.Builder builder = new AlertDialog.Builder(UsersDetailsActivity.this,R.style.MoreDetailsDialog);
                     builder.setTitle(R.string.more_details_dialog_Title);
-                    builder.setMessage( getString(R.string.more_details_id) + mUserArrayList.get(adapterPosition).getUserId() + "\n" +
-                            getString(R.string.more_details_name) + mUserArrayList.get(adapterPosition).getName() + "\n" +
-                            getString(R.string.more_details_userName) + mUserArrayList.get(adapterPosition).getUserName() + "\n" +
-                            getString(R.string.more_details_phone) + mUserArrayList.get(adapterPosition).getPhone() + "\n" +
-                            getString(R.string.more_details_website) + mUserArrayList.get(adapterPosition).getWebsite() + "\n\n" +
+                    builder.setMessage( getString(R.string.more_details_id) + mUserArrayList.get(mAdapterPosition).getUserId() + "\n" +
+                            getString(R.string.more_details_name) + mUserArrayList.get(mAdapterPosition).getName() + "\n" +
+                            getString(R.string.more_details_userName) + mUserArrayList.get(mAdapterPosition).getUserName() + "\n" +
+                            getString(R.string.more_details_phone) + mUserArrayList.get(mAdapterPosition).getPhone() + "\n" +
+                            getString(R.string.more_details_website) + mUserArrayList.get(mAdapterPosition).getWebsite() + "\n\n" +
                             getString(R.string.more_details_address)+"\n"+
-                            getString(R.string.more_details_street) + mUserArrayList.get(adapterPosition).getUserAddress().getStreet() + "\n" +
-                            getString(R.string.more_details_city) + mUserArrayList.get(adapterPosition).getUserAddress().getCity() + "\n" +
-                            getString(R.string.more_details_suite) + mUserArrayList.get(adapterPosition).getUserAddress().getSuite() + "\n" +
-                            getString(R.string.more_details_Zipcode) + mUserArrayList.get(adapterPosition).getUserAddress().getZipcode() + "\n\n" +
+                            getString(R.string.more_details_street) + mUserArrayList.get(mAdapterPosition).getUserAddress().getStreet() + "\n" +
+                            getString(R.string.more_details_city) + mUserArrayList.get(mAdapterPosition).getUserAddress().getCity() + "\n" +
+                            getString(R.string.more_details_suite) + mUserArrayList.get(mAdapterPosition).getUserAddress().getSuite() + "\n" +
+                            getString(R.string.more_details_Zipcode) + mUserArrayList.get(mAdapterPosition).getUserAddress().getZipcode() + "\n\n" +
                             getString(R.string.more_details_company)+"\n"+
-                            getString(R.string.more_details_companyName)+ mUserArrayList.get(adapterPosition).getCompany().getCompanyName()+"\n"+
-                            getString(R.string.more_details_catchPhrase)+ mUserArrayList.get(adapterPosition).getCompany().getCatchPhrase()+"\n"+
-                            getString(R.string.more_details_bs)+ mUserArrayList.get(adapterPosition).getCompany().getBs()+"\n");
+                            getString(R.string.more_details_companyName)+ mUserArrayList.get(mAdapterPosition).getCompany().getCompanyName()+"\n"+
+                            getString(R.string.more_details_catchPhrase)+ mUserArrayList.get(mAdapterPosition).getCompany().getCatchPhrase()+"\n"+
+                            getString(R.string.more_details_bs)+ mUserArrayList.get(mAdapterPosition).getCompany().getBs()+"\n");
 
                     AlertDialog dialog = builder.create();
                     dialog.getWindow().setBackgroundDrawableResource(android.R.color.background_dark);
@@ -123,10 +128,14 @@ public class UsersDetailsActivity extends AppCompatActivity {
         });
     }
 
-    //Get All Users List
+    /**
+     * Get All Users List from server
+     * add data from server to arraylist
+     * shows error message on no internet connectivity
+     */
     private void getUsersData() {
 
-        Call<List<User>> call = getDataService.getUsers();
+        Call<List<User>> call = mGetDataService.getUsers();
         call.enqueue(new Callback<List<User>>() {
             @Override
             public void onResponse(Call<List<User>> call, Response<List<User>> response) {
@@ -134,26 +143,31 @@ public class UsersDetailsActivity extends AppCompatActivity {
                 for (int i = 0; i < user.size(); i++) {
                     mUserArrayList.add(new User(user.get(i).getUserId(), user.get(i).getName(),user.get(i).getUserName(), user.get(i).getUserEmail(), user.get(i).getUserAddress(),user.get(i).getPhone(),user.get(i).getWebsite(),user.get(i).getCompany()));
                 }
-                userDetailsAdapter.notifyDataSetChanged();
-                progress.dismiss();
+                mUserDetailsAdapter.notifyDataSetChanged();
+                mProgress.dismiss();
                 Toast.makeText(UsersDetailsActivity.this, getString(R.string.data_fetch_successful), Toast.LENGTH_LONG).show();
             }
 
             @Override
             public void onFailure(Call<List<User>> call, Throwable t) {
-                progress.dismiss();
+                mProgress.dismiss();
                 showErrorDialog();
                 Toast.makeText(UsersDetailsActivity.this, getString(R.string.error_fetching_data), Toast.LENGTH_LONG).show();
             }
         });
     }
-    //Recycler Touch Handling
+
+
+    /**
+     * Recycler Touch Handling
+     * set  user data to text views
+     */
     private void recyclerTouchHandle() {
-        userDetailsAdapter.setOnClickListener(new UsersDetailsAdapter.UserClickListener() {
+        mUserDetailsAdapter.setOnClickListener(new UsersDetailsAdapter.UserClickListener() {
             @Override
             public void onCLick(int position) {
-                adapterPosition=position;
-                User user = mUserArrayList.get(adapterPosition);
+                mAdapterPosition=position;
+                User user = mUserArrayList.get(mAdapterPosition);
                 setData(user.getName(), String.valueOf(user.getUserId()), user.getUserEmail());
             }
         });
@@ -176,8 +190,8 @@ public class UsersDetailsActivity extends AppCompatActivity {
         AlertDialog.Builder builder =
                 new AlertDialog.Builder(UsersDetailsActivity.this);
         builder.setTitle(getResources().getString(R.string.app_name));
-        builder.setMessage("Internet not available?");
-        builder.setPositiveButton("Try Again", new DialogInterface.OnClickListener() {
+        builder.setMessage(getString(R.string.internet_not_available));
+        builder.setPositiveButton(getString(R.string.positive_try_again), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 getUsersData();

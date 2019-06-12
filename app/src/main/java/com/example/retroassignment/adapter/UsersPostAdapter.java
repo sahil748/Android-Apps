@@ -13,9 +13,9 @@ import com.example.retroassignment.model.UserPosts;
 import java.util.ArrayList;
 
 public class UsersPostAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-    private ArrayList<UserPosts> userPostArrayList;
-    public UsersPostAdapter(ArrayList<UserPosts> userPostArrayList) {
-        this.userPostArrayList = userPostArrayList;
+    private ArrayList<UserPosts> mUserPostArrayList;
+    public UsersPostAdapter(ArrayList<UserPosts> mUserPostArrayList) {
+        this.mUserPostArrayList = mUserPostArrayList;
     }
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View itemView = LayoutInflater.from(viewGroup.getContext())
@@ -25,7 +25,7 @@ public class UsersPostAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
-        UserPosts posts = userPostArrayList.get(i);
+        UserPosts posts = mUserPostArrayList.get(i);
         UserPostViewHolder holder = (UserPostViewHolder) viewHolder;
         holder.tvPostId.setText(String.valueOf(posts.getPostId()));
         holder.tvPostTitle.setText(posts.getPostTitle());
@@ -34,7 +34,7 @@ public class UsersPostAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
     @Override
     public int getItemCount() {
-        return userPostArrayList.size();
+        return mUserPostArrayList.size();
     }
 
     //Custom View Holder class for users post

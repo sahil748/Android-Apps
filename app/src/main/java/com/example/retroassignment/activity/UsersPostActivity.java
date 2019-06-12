@@ -13,7 +13,7 @@ import android.widget.Toast;
 
 import com.example.retroassignment.R;
 import com.example.retroassignment.adapter.UsersPostAdapter;
-import com.example.retroassignment.constant.Constant;
+import com.example.retroassignment.helper.Constant;
 import com.example.retroassignment.model.UserPosts;
 import com.example.retroassignment.network.GetDataService;
 import com.example.retroassignment.network.RetrofitUserInstance;
@@ -28,15 +28,15 @@ import retrofit2.Response;
 public class UsersPostActivity extends AppCompatActivity {
 
     private int userId;
-    private String userName;
-    private GetDataService getDataService;
-    private ArrayList<UserPosts> userPostList = new ArrayList<>();
-    private ProgressDialog progressDialog;
+    private String mUserName;
+    private GetDataService mGetDataService;
+    private ArrayList<UserPosts> mUserPostList = new ArrayList<>();
+    private ProgressDialog mProgressDialog;
     private TextView tvUserName;
     private TextView tvTotalPosts;
-    private int totalPostCount = 0;
-    private RecyclerView recyclerView;
-    private UsersPostAdapter userPostAdapter;
+    private int mTotalPostCount;
+    private RecyclerView mRecyclerView;
+    private UsersPostAdapter mUserPostAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
 
     @Override
@@ -46,48 +46,62 @@ public class UsersPostActivity extends AppCompatActivity {
         init();
         getUserPosts();
     }
+
+    /**
+     * get and set data to tv
+     */
     private void init() {
         tvUserName = findViewById(R.id.tv_user_name_post_view);
         tvTotalPosts = findViewById(R.id.tv_total_post_count);
-        recyclerView = findViewById(R.id.rv_user_post);
+        mRecyclerView = findViewById(R.id.rv_user_post);
 
-        userPostAdapter = new UsersPostAdapter(userPostList);
+        mUserPostAdapter = new UsersPostAdapter(mUserPostList);
         mLayoutManager = new LinearLayoutManager(UsersPostActivity.this);
-        recyclerView.setLayoutManager(mLayoutManager);
-        recyclerView.setAdapter(userPostAdapter);
+        mRecyclerView.setLayoutManager(mLayoutManager);
+        mRecyclerView.setAdapter(mUserPostAdapter);
 
         Intent intent = getIntent();
         userId = Integer.parseInt(intent.getStringExtra(Constant.USER_ID));
-        userName = intent.getStringExtra(Constant.USER_NAME);
-        tvUserName.setText(userName);
-        progressDialog = ProgressDialog.show(this, getString(R.string.loading_text), getString(R.string.post_loading_text), true);
-        getDataService = RetrofitUserInstance.getUser().create(GetDataService.class);
+        mUserName = intent.getStringExtra(Constant.USER_NAME);
+        tvUserName.setText(mUserName);
+        mProgressDialog = ProgressDialog.show(this, getString(R.string.loading_text), getString(R.string.post_loading_text), true);
+        mGetDataService = RetrofitUserInstance.getUser().create(GetDataService.class);
     }
+
+    /**
+     * get user posts from server
+     * add user posts to arraylist
+     * shows error message on failure
+     */
     private void getUserPosts() {
-        Call<List<UserPosts>> postCall = getDataService.getUserPost(userId);
+        Call<List<UserPosts>> postCall = mGetDataService.getUserPost(userId);
         postCall.enqueue(new Callback<List<UserPosts>>() {
             @Override
             public void onResponse(Call<List<UserPosts>> call, Response<List<UserPosts>> response) {
                 List<UserPosts> userPosts = response.body();
                 for (int i = 0; i < userPosts.size(); i++) {
-                    totalPostCount++;
-                    userPostList.add(new UserPosts(userPosts.get(i).getPostId()
+                    mTotalPostCount++;
+                    mUserPostList.add(new UserPosts(userPosts.get(i).getPostId()
                             , userPosts.get(i).getPostTitle()
                             , userPosts.get(i).getPostBody()));
                 }
-                tvTotalPosts.setText(String.valueOf(totalPostCount));
-                userPostAdapter.notifyDataSetChanged();
+                tvTotalPosts.setText(String.valueOf(mTotalPostCount));
+                mUserPostAdapter.notifyDataSetChanged();
                 Toast.makeText(UsersPostActivity.this, getString(R.string.data_fetch_successful), Toast.LENGTH_LONG).show();
-                progressDialog.dismiss();
+                mProgressDialog.dismiss();
             }
 
             @Override
             public void onFailure(Call<List<UserPosts>> call, Throwable t) {
-                progressDialog.dismiss();
+                mProgressDialog.dismiss();
                 showErrorDialog();
             }
         });
     }
+
+    /**
+     * shows alert on no internet connectivity
+     */
     private void showErrorDialog() {
         AlertDialog.Builder builder =
                 new AlertDialog.Builder(UsersPostActivity.this);

@@ -2,10 +2,12 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    android:background="@color/rvPostBg"
     android:layout_height="wrap_content">
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+
         android:layout_marginBottom="@dimen/card_post_margin_bottom">
 
         <LinearLayout
@@ -14,6 +16,7 @@
             android:orientation="vertical">
 
             <LinearLayout
+                android:background="@color/rvPostBg"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -24,8 +27,9 @@
                     android:paddingLeft="@dimen/post_id_padding_left"
                     android:paddingTop="@dimen/post_id_padding_top"
                     android:text="@string/post_id_text"
-                    android:textColor="@color/secondary_text"
-                    android:textStyle="bold" />
+                    android:textColor="@color/textStartBlue"
+                    android:textStyle="bold"
+                    android:paddingStart="@dimen/post_id_padding_left" />
 
                 <TextView
                     android:id="@+id/tv_post_id"
@@ -34,8 +38,10 @@
                     android:layout_marginLeft="@dimen/post_id_margin_left"
                     android:paddingTop="@dimen/post_id_padding_top"
                     android:paddingRight="@dimen/post_id_padding_right"
-                    android:textColor="@color/secondary_text"
-                    android:textStyle="bold" />
+                    android:textColor="@color/textStartBlue"
+                    android:textStyle="bold"
+                    android:layout_marginStart="@dimen/post_id_margin_left"
+                    android:paddingEnd="@dimen/post_id_padding_right" />
             </LinearLayout>
 
             <TextView
@@ -45,20 +51,23 @@
                 android:paddingLeft="@dimen/post_title_padding_left"
                 android:paddingTop="@dimen/post_title_padding_top"
                 android:paddingRight="@dimen/post_title_padding_right"
-                android:textColor="@color/secondary_text_black"
-                android:textStyle="bold" />
+                android:textColor="@color/primaryText"
+                android:textStyle="bold"
+                android:paddingStart="@dimen/post_title_padding_left"
+                android:paddingEnd="@dimen/post_title_padding_right" />
 
             <TextView
                 android:id="@+id/tv_post_body"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/tv_post_title"
                 android:layout_marginTop="@dimen/post_body_margin_top"
                 android:paddingLeft="@dimen/post_body_padding_left"
                 android:paddingTop="@dimen/post_body_padding_top"
                 android:paddingRight="@dimen/post_body_padding_right"
                 android:paddingBottom="@dimen/post_body_padding_bottom"
-                android:textColor="#000000" />
+                android:textColor="@color/primaryText"
+                android:paddingStart="@dimen/post_body_padding_left"
+                android:paddingEnd="@dimen/post_body_padding_right" />
         </LinearLayout>
     </android.support.v7.widget.CardView>
 

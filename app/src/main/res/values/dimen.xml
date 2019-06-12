@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="view_width">2dp</dimen>
+    <dimen name="width_zero">0dp</dimen>
+    <dimen name="height_zero">0dp</dimen>
+    <dimen name="btn_margin_bottom">10dp</dimen>
     <dimen name="detail_fragment_margin">8dp</dimen>
     <dimen name="view_height">2dp</dimen>
     <dimen name="detail_card_height">200dp</dimen>
