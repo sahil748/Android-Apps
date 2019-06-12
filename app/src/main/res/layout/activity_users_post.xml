@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".activity.UsersPostActivity">
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/detail_card_height"
+        android:layout_margin="@dimen/detail_card_margin">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+            <ImageView
+                android:layout_width="@dimen/card_image_width"
+                android:layout_height="@dimen/card_image_height"
+                android:src="@drawable/ic_user"
+                android:layout_gravity="center_horizontal"
+                android:id="@+id/iv_user_image_post"
+                android:layout_marginTop="@dimen/card_image_margin_top"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/card_name_text_margin_top"
+                android:textColor="#000000"
+                android:textStyle="bold"
+                android:textSize="@dimen/card_name_text_size"
+                android:gravity="center_horizontal"
+                android:id="@+id/tv_user_name_post_view"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/card_post_margin_top"
+                android:textColor="#000000"
+                android:textStyle="bold"
+                android:text="@string/card_post_text"
+                android:textSize="@dimen/card_post_text_size"
+                android:gravity="center_horizontal" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/secondary_text"
+                android:textStyle="bold"
+                android:textSize="@dimen/card_post_text_size"
+                android:gravity="center_horizontal"
+                android:id="@+id/tv_total_post_count"/>
+
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="vertical"
+        android:id="@+id/rv_user_post">
+    </android.support.v7.widget.RecyclerView>
+
+</LinearLayout>

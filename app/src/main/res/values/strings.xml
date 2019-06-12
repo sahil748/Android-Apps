@@ -1,0 +1,44 @@
+<resources>
+    <string name="app_name">RetroAssignment</string>
+    <string name="card_post_text">Posts</string>
+    <string name="progress_title">Loading</string>
+    <string name="progress_body">Fetching User List</string>
+    <string name="no_user_click_text">Please Click a User Above</string>
+    <string name="data_fetch_successful">Data Fetched Successfully!</string>
+    <string name="error_fetching_data">Error While Fetching Data!</string>
+    <string name="loading_text">Loading</string>
+    <string name="post_loading_text">Fetching User Post</string>
+    <string name="Internet_fetch_error">Error While Fetching Post!</string>
+    <string name="internet_not_available">Internet not available ?</string>
+    <string name="positive_try_again">Try Again</string>
+    <string name="negative_back">Back</string>
+    <string name="user_name_text">User Name</string>
+    <string name="user_id_text">User ID</string>
+    <string name="user_email_text">User Email</string>
+    <string name="fetch_post_text_button">Show Post</string>
+    <string name="post_id_text">Post Id:</string>
+    <string name="title_text">Title</string>
+    <string name="more_details_dialog_Title">MORE DETAILS OF USER</string>
+    <string name="btn_more_details">User Details</string>
+    <string name="more_details_name">Name : </string>
+    <string name="more_details_id">User Id : </string>
+    <string name="more_details_userName">userName : </string>
+    <string name="more_details_address">ADDRESS  </string>
+    <string name="more_details_street">    Street : </string>
+    <string name="more_details_suite">    Suite : </string>
+    <string name="more_details_city">    City : </string>
+    <string name="more_details_Zipcode">    Zipcode : </string>
+    <string name="more_details_phone">    Phone No : </string>
+    <string name="more_details_website">    Website : </string>
+    <string name="more_details_company">COMPANY</string>
+    <string name="more_details_companyName">    Name : </string>
+    <string name="more_details_catchPhrase">    Catch Phrase : </string>
+    <string name="more_details_bs">    Bs : </string>
+
+
+
+
+
+
+
+</resources>
