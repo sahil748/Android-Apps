@@ -188,6 +188,9 @@ public class StudentsListFragment extends Fragment implements StudentRecyclerVie
                 mAdapter = new StudentRecyclerViewAdapter(mStudentslist, this);
                 mStudentRecyclerView.setAdapter(mAdapter);
             }
+            else {
+                insertIntoArrayList(bundle);
+            }
         }
         else if(mResultOfButton.equals(Constants.BUTTON_ACTION_SERVICE)){
             if (mResult.equals(Constants.EDIT)) {
@@ -202,6 +205,9 @@ public class StudentsListFragment extends Fragment implements StudentRecyclerVie
                 mStudentRecyclerView.setAdapter(mAdapter);
 
             }
+            else {
+                insertIntoArrayList(bundle);
+            }
         }
         else if(mResultOfButton.equals(Constants.BUTTON_ACTION_INTENTSERVICE)){
             if (mResult.equals(Constants.EDIT)) {
@@ -215,6 +221,9 @@ public class StudentsListFragment extends Fragment implements StudentRecyclerVie
                 mAdapter = new StudentRecyclerViewAdapter(mStudentslist, this);
                 mStudentRecyclerView.setAdapter(mAdapter);
 
+            }
+            else {
+                insertIntoArrayList(bundle);
             }
         }
         isDataAvailable(Constants.STUDENT_LIST_EMPTY);
@@ -254,6 +263,13 @@ public class StudentsListFragment extends Fragment implements StudentRecyclerVie
             }
         }
 
+    }
+    public void insertIntoArrayList(Bundle bundle){
+        mName = bundle.getString(Constants.KEY_NAME);
+        mRoll = bundle.getString(Constants.KEY_ROLL);
+        mClassName = bundle.getString(Constants.KEY_CLASS);
+        mStudentslist.add(new StudentModel(mName, mRoll, mClassName));
+        mAdapter.notifyDataSetChanged();
     }
 
     /**
